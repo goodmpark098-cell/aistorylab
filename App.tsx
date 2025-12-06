@@ -6,16 +6,6 @@ import { analyzeTranscript, generateViralScriptStream } from './services/geminiS
 import { AppState, AnalysisResult } from './types';
 import { Key, Sparkles, ExternalLink } from 'lucide-react';
 
-// Augment the global AIStudio interface to include the required methods.
-// We do not declare 'aistudio' on Window here because it is already declared in the environment,
-// causing a type conflict if we redeclare it.
-declare global {
-  interface AIStudio {
-    hasSelectedApiKey(): Promise<boolean>;
-    openSelectKey(): Promise<void>;
-  }
-}
-
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>(AppState.IDLE);
   const [generatedContent, setGeneratedContent] = useState('');
@@ -35,8 +25,9 @@ const App: React.FC = () => {
       const hasKey = await window.aistudio.hasSelectedApiKey();
       setHasApiKey(hasKey);
     } else {
-      // If not in AI Studio environment, assume env var is set or handle gracefully
-      setHasApiKey(true); 
+      // Check if VITE_GEMINI_API_KEY is set in environment
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      setHasApiKey(!!apiKey && apiKey.trim() !== '');
     }
     setIsCheckingKey(false);
   };
@@ -115,6 +106,97 @@ const App: React.FC = () => {
     return (
       <div className="h-screen bg-gray-950 flex items-center justify-center text-white">
         <div className="w-8 h-8 border-4 border-brand-500/30 border-t-brand-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  // API Key Setup Screen
+  if (!hasApiKey) {
+    return (
+      <div className="h-screen bg-gray-950 flex items-center justify-center text-white p-6">
+        <div className="max-w-2xl w-full bg-gray-900 rounded-2xl shadow-2xl p-8 border border-gray-800">
+          <div className="flex items-center justify-center mb-6">
+            <Key className="w-16 h-16 text-brand-500" />
+          </div>
+          
+          <h1 className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
+            Google Gemini API 키가 필요합니다
+          </h1>
+          
+          <p className="text-gray-300 text-center mb-8 leading-relaxed">
+            AI Story Lab을 사용하려면 Google Gemini API 키가 필요합니다.<br/>
+            무료로 발급받을 수 있으며, 설정은 1분이면 완료됩니다.
+          </p>
+
+          <div className="bg-gray-800/50 rounded-lg p-6 mb-6 space-y-4">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-brand-500" />
+              API 키 발급 및 설정 방법
+            </h2>
+            
+            <div className="space-y-3 text-gray-300">
+              <div className="flex gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                <div>
+                  <p className="font-medium text-white mb-1">API 키 발급</p>
+                  <p className="text-sm">
+                    <a 
+                      href="https://aistudio.google.com/app/apikey" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-brand-400 hover:text-brand-300 underline inline-flex items-center gap-1"
+                    >
+                      Google AI Studio <ExternalLink className="w-3 h-3" />
+                    </a>
+                    에서 "Create API Key" 버튼을 클릭하여 키를 생성하세요.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                <div>
+                  <p className="font-medium text-white mb-1">API 키 저장</p>
+                  <p className="text-sm">
+                    프로젝트 루트 폴더의 <code className="bg-gray-700 px-2 py-1 rounded text-brand-300">.env</code> 파일을 열고<br/>
+                    발급받은 키를 다음과 같이 입력하세요:
+                  </p>
+                  <div className="mt-2 bg-gray-900 rounded p-3 font-mono text-xs text-green-400">
+                    VITE_GEMINI_API_KEY=여기에_발급받은_API_키_입력
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                <div>
+                  <p className="font-medium text-white mb-1">서버 재시작</p>
+                  <p className="text-sm">
+                    개발 서버를 재시작하세요 (터미널에서 Ctrl+C 후 <code className="bg-gray-700 px-2 py-1 rounded text-brand-300">npm run dev</code>)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 mb-6">
+            <p className="text-sm text-blue-300 flex items-start gap-2">
+              <span className="text-blue-400 font-bold mt-0.5">💡</span>
+              <span>
+                <strong>무료 할당량:</strong> Google Gemini API는 매월 무료 사용량을 제공합니다. 
+                일반적인 사용에는 충분하며, 초과 시 과금이 발생합니다.
+              </span>
+            </p>
+          </div>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          >
+            <Key className="w-5 h-5" />
+            API 키 설정 후 새로고침
+          </button>
+        </div>
       </div>
     );
   }

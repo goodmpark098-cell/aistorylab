@@ -20,3 +20,15 @@ export enum AppState {
   COMPLETE = 'COMPLETE',
   ERROR = 'ERROR',
 }
+
+// AI Studio global types
+declare global {
+  interface AIStudio {
+    hasSelectedApiKey(): Promise<boolean>;
+    openSelectKey(): Promise<void>;
+  }
+
+  interface Window {
+    aistudio?: AIStudio;
+  }
+}
