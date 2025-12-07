@@ -358,19 +358,19 @@ const OutputDisplay: React.FC<OutputDisplayProps> = ({ content, appState, onRese
 
       <div className="flex-1 p-0 overflow-hidden bg-gray-950/50 relative">
         
-        {/* Generation Overlay - Persistent until COMPLETE */}
+        {/* Generation Overlay - Fixed position for mobile */}
         {isGenerating && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-950/70 backdrop-blur-[2px] z-30 transition-all duration-500 select-none">
-            <div className="relative mb-8 transform scale-110">
+          <div className="fixed inset-0 md:absolute flex flex-col items-center justify-center bg-gray-950/90 backdrop-blur-[2px] z-50 transition-all duration-500 select-none">
+            <div className="relative mb-6 md:mb-8 transform scale-100 md:scale-110">
               <div className="absolute inset-0 bg-brand-500/20 blur-2xl rounded-full animate-pulse" />
-              <div className="relative bg-gray-900 border border-gray-700 p-6 rounded-2xl shadow-2xl flex items-center justify-center ring-1 ring-gray-700/50">
-                <Hourglass className="w-14 h-14 text-brand-500 animate-spin-slow duration-[3000ms]" />
+              <div className="relative bg-gray-900 border border-gray-700 p-5 md:p-6 rounded-2xl shadow-2xl flex items-center justify-center ring-1 ring-gray-700/50">
+                <Hourglass className="w-12 h-12 md:w-14 md:h-14 text-brand-500 animate-spin-slow duration-[3000ms]" />
               </div>
             </div>
-            <div className="text-6xl font-bold text-white font-mono tracking-wider mb-5 tabular-nums drop-shadow-lg">
+            <div className="text-5xl md:text-6xl font-bold text-white font-mono tracking-wider mb-4 md:mb-5 tabular-nums drop-shadow-lg">
               {formatTime(timeLeft)}
             </div>
-            <p className="text-gray-300 animate-pulse font-medium text-lg drop-shadow-md">AI 시나리오 작가가 집필을 시작했습니다...</p>
+            <p className="text-gray-300 animate-pulse font-medium text-base md:text-lg drop-shadow-md px-4 text-center">AI 시나리오 작가가 집필을 시작했습니다...</p>
           </div>
         )}
 
