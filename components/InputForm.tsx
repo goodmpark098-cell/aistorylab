@@ -69,7 +69,7 @@ const InputForm: React.FC<InputFormProps> = ({
             value={originalScript}
             onChange={(e) => setOriginalScript(e.target.value)}
             placeholder="영상 스크립트 붙여넣기..."
-            className="w-full h-full min-h-[300px] md:min-h-[200px] bg-gray-950 border border-gray-800 rounded-xl p-4 text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize-none transition-all text-base md:text-sm leading-relaxed"
+            className="w-full h-full min-h-[400px] md:min-h-[200px] bg-gray-950 border border-gray-800 rounded-xl p-4 text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize-none transition-all text-base md:text-sm leading-relaxed"
           />
         </div>
 

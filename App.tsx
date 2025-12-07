@@ -118,11 +118,11 @@ const App: React.FC = () => {
     <div className="h-screen bg-gray-950 flex flex-col font-sans overflow-hidden relative">
       <Header />
       
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6 min-h-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 h-full">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6 min-h-0 overflow-y-auto lg:overflow-hidden">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-6 lg:h-full">
           
           {/* Left Column: Input (Analysis & Config) */}
-          <section className="h-[50vh] lg:h-full min-h-0 flex flex-col">
+          <section className="min-h-[600px] lg:h-full lg:min-h-0 flex flex-col">
             <InputForm 
               onAnalyze={handleAnalysis}
               onGenerate={handleGeneration}
@@ -133,7 +133,7 @@ const App: React.FC = () => {
           </section>
 
           {/* Right Column: Output (Final Script) */}
-          <section className="h-[50vh] lg:h-full min-h-0 flex flex-col">
+          <section className="min-h-[600px] lg:h-full lg:min-h-0 flex flex-col">
             <OutputDisplay 
               content={generatedContent} 
               onContentChange={handleContentChange}
