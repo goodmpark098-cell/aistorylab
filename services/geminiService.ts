@@ -148,9 +148,9 @@ export const generateViralScriptStream = async (
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
-        temperature: 0.9,
-        topP: 0.95,
-        topK: 64,
+        temperature: 0.7,
+        topP: 0.8,
+        topK: 40,
       }
     });
 
