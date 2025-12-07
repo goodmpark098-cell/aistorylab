@@ -53,9 +53,9 @@ const InputForm: React.FC<InputFormProps> = ({
     return (
       <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl h-full flex flex-col overflow-hidden">
         {/* Header - Fixed */}
-        <div className="p-6 pb-0 flex-none">
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-1">
+        <div className="p-4 md:p-6 pb-0 flex-none">
+          <div className="mb-4 md:mb-6">
+            <h2 className="text-base md:text-lg font-semibold text-white flex items-center gap-2 mb-1">
               <FileText className="w-5 h-5 text-brand-500" />
               1단계: 원본 대본 입력
             </h2>
@@ -64,22 +64,22 @@ const InputForm: React.FC<InputFormProps> = ({
         </div>
 
         {/* Content - Scrollable */}
-        <div className="flex-1 px-6 pb-2 overflow-y-auto">
+        <div className="flex-1 px-4 md:px-6 pb-2 overflow-y-auto">
           <textarea
             value={originalScript}
             onChange={(e) => setOriginalScript(e.target.value)}
             placeholder="영상 스크립트 붙여넣기..."
-            className="w-full h-full min-h-[200px] bg-gray-950 border border-gray-800 rounded-xl p-4 text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize-none transition-all text-sm leading-relaxed"
+            className="w-full h-full min-h-[300px] md:min-h-[200px] bg-gray-950 border border-gray-800 rounded-xl p-4 text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none resize-none transition-all text-base md:text-sm leading-relaxed"
           />
         </div>
 
         {/* Footer - Fixed */}
-        <div className="p-6 pt-4 flex-none border-t border-gray-800/50 bg-gray-900">
+        <div className="p-4 md:p-6 pt-3 md:pt-4 flex-none border-t border-gray-800/50 bg-gray-900">
           <button
             onClick={handleAnalyzeClick}
             disabled={!originalScript.trim()}
             className={`
-              w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold text-white transition-all duration-200
+              w-full flex items-center justify-center gap-2 py-3 md:py-4 rounded-xl font-semibold text-white transition-all duration-200 text-base
               ${!originalScript.trim()
                 ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
                 : 'bg-brand-600 hover:bg-brand-500 shadow-lg shadow-brand-900/20 active:scale-[0.98]'}
@@ -108,9 +108,9 @@ const InputForm: React.FC<InputFormProps> = ({
   return (
     <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl h-full flex flex-col overflow-hidden">
       {/* Header - Fixed */}
-      <div className="p-6 pb-4 flex-none border-b border-gray-800/50">
+      <div className="p-4 md:p-6 pb-3 md:pb-4 flex-none border-b border-gray-800/50">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+          <h2 className="text-base md:text-lg font-semibold text-white flex items-center gap-2">
             <Wand2 className="w-5 h-5 text-brand-500" />
             2단계: 주제 선정
           </h2>
@@ -121,19 +121,19 @@ const InputForm: React.FC<InputFormProps> = ({
       </div>
 
       {/* Content - Scrollable (Only Analysis Summary & Topics List) */}
-      <div className="flex-1 overflow-y-auto p-6">
-        <div className="bg-gray-950/50 rounded-xl p-4 border border-gray-800 mb-6">
+      <div className="flex-1 overflow-y-auto p-4 md:p-6">
+        <div className="bg-gray-950/50 rounded-xl p-3 md:p-4 border border-gray-800 mb-4 md:mb-6">
           <h3 className="text-sm font-medium text-gray-300 mb-2">🔍 분석된 구조 요약</h3>
           <p className="text-sm text-gray-400 leading-relaxed italic">
             "{analysisResult?.structureSummary}"
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           <label className="block text-sm font-medium text-gray-300">
             AI 추천 주제 (선택)
           </label>
-          <div className="grid gap-3">
+          <div className="grid gap-2 md:gap-3">
             {analysisResult?.suggestedTopics.map((topic, idx) => (
               <button
                 key={idx}
@@ -143,7 +143,7 @@ const InputForm: React.FC<InputFormProps> = ({
                 }}
                 disabled={isGenerating}
                 className={`
-                  w-full text-left p-3 rounded-lg border text-sm transition-all relative
+                  w-full text-left p-3 md:p-3 rounded-lg border text-base md:text-sm transition-all relative
                   ${selectedTopic === topic 
                     ? 'bg-brand-500/10 border-brand-500 text-brand-200 ring-1 ring-brand-500' 
                     : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700 hover:border-gray-600'}
@@ -160,8 +160,8 @@ const InputForm: React.FC<InputFormProps> = ({
       </div>
 
       {/* Footer - Fixed (Input & Button) */}
-      <div className="p-6 pt-4 flex-none border-t border-gray-800/50 bg-gray-900">
-        <div className="mb-4">
+      <div className="p-4 md:p-6 pt-4 flex-none border-t border-gray-800/50 bg-gray-900">
+        <div className="mb-3 md:mb-4">
            <label className="block text-sm font-medium text-gray-300 mb-2">
             또는 직접 입력
           </label>
@@ -173,7 +173,7 @@ const InputForm: React.FC<InputFormProps> = ({
               setSelectedTopic('');
             }}
             placeholder="원하는 주제가 있다면 직접 입력하세요"
-            className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
+            className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-base text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all"
             disabled={isGenerating}
           />
         </div>
@@ -182,7 +182,7 @@ const InputForm: React.FC<InputFormProps> = ({
           onClick={handleGenerateClick}
           disabled={isGenerating || (!selectedTopic && !customTopic.trim())}
           className={`
-            w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold text-white transition-all duration-200
+            w-full flex items-center justify-center gap-2 py-3 md:py-4 rounded-xl font-semibold text-white transition-all duration-200 text-base
             ${isGenerating || (!selectedTopic && !customTopic.trim())
               ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
               : 'bg-brand-600 hover:bg-brand-500 shadow-lg shadow-brand-900/20 active:scale-[0.98]'}

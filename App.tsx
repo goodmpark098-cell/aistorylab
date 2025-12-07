@@ -119,10 +119,10 @@ const App: React.FC = () => {
       <Header />
       
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6 min-h-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 h-full">
           
           {/* Left Column: Input (Analysis & Config) */}
-          <section className="h-full min-h-0 flex flex-col">
+          <section className="h-[50vh] lg:h-full min-h-0 flex flex-col">
             <InputForm 
               onAnalyze={handleAnalysis}
               onGenerate={handleGeneration}
@@ -133,7 +133,7 @@ const App: React.FC = () => {
           </section>
 
           {/* Right Column: Output (Final Script) */}
-          <section className="h-full min-h-0 flex flex-col">
+          <section className="h-[50vh] lg:h-full min-h-0 flex flex-col">
             <OutputDisplay 
               content={generatedContent} 
               onContentChange={handleContentChange}
@@ -147,7 +147,7 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer for mobile/scroll contexts - fixed at bottom of screen in this layout */}
-      <footer className="flex-none py-4 text-center text-gray-600 text-sm border-t border-gray-900 bg-gray-950">
+      <footer className="flex-none py-3 md:py-4 text-center text-gray-600 text-xs md:text-sm border-t border-gray-900 bg-gray-950">
         <p>© {new Date().getFullYear()} AI StoryLab. YouTube와 관련 없음.</p>
       </footer>
     </div>

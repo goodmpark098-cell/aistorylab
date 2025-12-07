@@ -251,8 +251,8 @@ const OutputDisplay: React.FC<OutputDisplayProps> = ({ content, appState, onRese
   return (
     <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl h-full flex flex-col overflow-hidden relative">
       {/* Header Toolbar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-gray-800 bg-gray-900/50 gap-4 sm:gap-0 flex-none z-10 min-h-[64px]">
-        <h2 className="text-lg font-semibold text-white flex items-center gap-2 whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 md:px-6 py-3 md:py-4 border-b border-gray-800 bg-gray-900/50 gap-3 sm:gap-0 flex-none z-10 min-h-[64px]">
+        <h2 className="text-base md:text-lg font-semibold text-white flex items-center gap-2 whitespace-nowrap">
           {isGenerating ? (
             <>
               <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse flex-none" />
@@ -378,19 +378,19 @@ const OutputDisplay: React.FC<OutputDisplayProps> = ({ content, appState, onRese
           <textarea
             value={editBuffer}
             onChange={(e) => setEditBuffer(e.target.value)}
-            className="w-full h-full p-8 bg-gray-950 text-gray-100 resize-none outline-none font-sans text-base sm:text-lg leading-loose selection:bg-brand-900 selection:text-white placeholder-gray-700"
+            className="w-full h-full p-4 md:p-8 bg-gray-950 text-gray-100 resize-none outline-none font-sans text-base leading-relaxed md:leading-loose selection:bg-brand-900 selection:text-white placeholder-gray-700"
             spellCheck={false}
           />
         ) : (
-          <div className="h-full overflow-y-auto p-6 relative">
+          <div className="h-full overflow-y-auto p-4 md:p-6 relative">
             {/* Main Content - Dimmed when generating */}
             <div className={`prose prose-invert prose-brand max-w-none transition-all duration-700 ${isGenerating ? 'opacity-30 blur-[1px]' : 'opacity-100'}`}>
               <ReactMarkdown
                 components={{
-                  h2: ({node, ...props}) => <h2 className="text-xl font-bold text-white mt-6 mb-4 pb-2 border-b border-gray-800" {...props} />,
-                  p: ({node, ...props}) => <p className="mb-4 text-gray-300 leading-relaxed break-keep" {...props} />,
-                  ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4 space-y-2 text-gray-300" {...props} />,
-                  li: ({node, ...props}) => <li className="" {...props} />,
+                  h2: ({node, ...props}) => <h2 className="text-lg md:text-xl font-bold text-white mt-4 md:mt-6 mb-3 md:mb-4 pb-2 border-b border-gray-800" {...props} />,
+                  p: ({node, ...props}) => <p className="mb-3 md:mb-4 text-gray-300 text-base leading-relaxed break-keep" {...props} />,
+                  ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-3 md:mb-4 space-y-2 text-gray-300" {...props} />,
+                  li: ({node, ...props}) => <li className="text-base" {...props} />,
                   strong: ({node, ...props}) => <strong className="font-semibold text-brand-400" {...props} />,
                 }}
               >
