@@ -2,9 +2,10 @@ import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { AnalysisResult } from "../types";
 
 const getClient = () => {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  // localStorage에서 사용자가 입력한 API 키 가져오기
+  const apiKey = localStorage.getItem('gemini_api_key');
   if (!apiKey) {
-    throw new Error("API Key is missing. Please add VITE_GEMINI_API_KEY to your .env file");
+    throw new Error("API 키가 설정되지 않았습니다. API 키를 먼저 입력해주세요.");
   }
   return new GoogleGenAI({ apiKey });
 };
