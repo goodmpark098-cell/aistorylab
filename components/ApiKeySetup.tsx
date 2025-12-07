@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Key, Eye, EyeOff, ExternalLink } from 'lucide-react';
+import { Key, Eye, EyeOff, ExternalLink, Sparkles } from 'lucide-react';
 
 interface ApiKeySetupProps {
   onApiKeySet: () => void;
