@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ onResetApiKey }) => {
           {onResetApiKey && (
             <button
               onClick={onResetApiKey}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors text-xs md:text-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-yellow-600 hover:bg-yellow-500 text-white font-medium transition-all hover:scale-105 shadow-lg shadow-yellow-900/20 text-xs md:text-sm"
               title="API 키 변경"
             >
               <Key className="w-3.5 h-3.5 md:w-4 md:h-4" />
