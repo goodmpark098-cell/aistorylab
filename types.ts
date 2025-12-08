@@ -21,6 +21,8 @@ export enum AppState {
   ERROR = 'ERROR',
 }
 
+export type AIProvider = 'gemini' | 'claude';
+
 // AI Studio global types
 declare global {
   interface AIStudio {

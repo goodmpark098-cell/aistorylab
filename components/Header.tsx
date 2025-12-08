@@ -1,11 +1,19 @@
 import React from 'react';
-import { Sparkles, Youtube, Key } from 'lucide-react';
+import { Sparkles, Youtube, Key, Zap } from 'lucide-react';
+import { AIProvider } from '../types';
 
 interface HeaderProps {
   onResetApiKey?: () => void;
+  currentProvider?: AIProvider;
 }
 
-const Header: React.FC<HeaderProps> = ({ onResetApiKey }) => {
+const Header: React.FC<HeaderProps> = ({ onResetApiKey, currentProvider = 'gemini' }) => {
+  const providerInfo = currentProvider === 'gemini' 
+    ? { icon: Sparkles, name: 'Gemini 2.5', color: 'text-brand-500' }
+    : { icon: Zap, name: 'Claude 3.5', color: 'text-purple-500' };
+  
+  const ProviderIcon = providerInfo.icon;
+  
   return (
     <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
@@ -19,8 +27,8 @@ const Header: React.FC<HeaderProps> = ({ onResetApiKey }) => {
         </div>
         <div className="flex items-center gap-3 md:gap-4 text-sm text-gray-400">
           <div className="hidden sm:flex items-center gap-1">
-            <Sparkles className="w-4 h-4 text-brand-500" />
-            <span>Gemini 2.5 기반</span>
+            <ProviderIcon className={`w-4 h-4 ${providerInfo.color}`} />
+            <span>{providerInfo.name} 기반</span>
           </div>
           {onResetApiKey && (
             <button
