@@ -118,7 +118,7 @@ const ApiKeySetup: React.FC<ApiKeySetupProps> = ({ onApiKeySet }) => {
                   Claude 3.5
                   <DollarSign className="w-4 h-4 text-yellow-500" />
                 </h3>
-                <p className="text-sm text-yellow-400 mb-2">유료 (고급)</p>
+                <p className="text-sm text-yellow-400 mb-2">유료 (대본당 약 250~650원)</p>
                 <ul className="text-xs text-gray-400 space-y-1">
                   <li>✓ 뛰어난 스토리텔링</li>
                   <li>✓ 창의적인 표현</li>
@@ -175,14 +175,14 @@ const ApiKeySetup: React.FC<ApiKeySetupProps> = ({ onApiKeySet }) => {
                 <div className="flex gap-3">
                   <span className="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-sm font-bold">1</span>
                   <div>
-                    <p className="font-medium text-white mb-1">Anthropic Console 접속</p>
+                    <p className="font-medium text-white mb-1">Anthropic Console 접속 및 가입</p>
                     <a 
-                      href="https://console.anthropic.com/" 
+                      href="https://console.anthropic.com/dashboard" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-purple-400 hover:text-purple-300 underline inline-flex items-center gap-1 text-sm"
                     >
-                      https://console.anthropic.com/ <ExternalLink className="w-3 h-3" />
+                      https://console.anthropic.com/dashboard <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
@@ -191,15 +191,23 @@ const ApiKeySetup: React.FC<ApiKeySetupProps> = ({ onApiKeySet }) => {
                   <span className="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-sm font-bold">2</span>
                   <div>
                     <p className="font-medium text-white mb-1">신용카드 등록 및 크레딧 충전</p>
-                    <p className="text-sm">최소 $5 충전 필요 (약 6,500원)</p>
+                    <p className="text-sm">Settings → Billing → 최소 $5 충전 (약 7,000원)</p>
                   </div>
                 </div>
 
                 <div className="flex gap-3">
                   <span className="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-sm font-bold">3</span>
                   <div>
-                    <p className="font-medium text-white mb-1">API 키 생성 및 복사</p>
-                    <p className="text-sm">API Keys → Create Key → 생성된 키 (sk-ant-...로 시작)를 복사</p>
+                    <p className="font-medium text-white mb-1">API 키 생성</p>
+                    <a 
+                      href="https://console.anthropic.com/settings/keys" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 underline inline-flex items-center gap-1 text-sm mb-1 block"
+                    >
+                      API Keys 페이지 바로가기 <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <p className="text-sm">"Create Key" 클릭 → 생성된 키 (sk-ant-...로 시작)를 복사</p>
                   </div>
                 </div>
               </>
@@ -258,8 +266,9 @@ const ApiKeySetup: React.FC<ApiKeySetupProps> = ({ onApiKeySet }) => {
             <p className="text-sm text-yellow-300 flex items-start gap-2">
               <span className="text-yellow-400 font-bold mt-0.5">💰</span>
               <span>
-                <strong>예상 비용:</strong> Claude API는 대본 1개당 약 250~650원 정도 소요됩니다. 
-                스토리텔링 품질이 우수하며, 같은 내용 반복 없이 창의적인 대본을 생성합니다.
+                <strong>예상 비용:</strong> 대본 1개당 약 <strong className="text-yellow-200">250~650원</strong> 정도 소요됩니다. 
+                최소 $5(약 7,000원) 충전으로 약 10~20개의 대본을 생성할 수 있습니다. 
+                스토리텔링 품질이 우수하며, 내용 중복 없이 창의적인 대본을 생성합니다.
               </span>
             </p>
           </div>
