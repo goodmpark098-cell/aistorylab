@@ -122,7 +122,7 @@ const ApiKeySetup: React.FC<ApiKeySetupProps> = ({ onApiKeySet }) => {
                 <ul className="text-xs text-gray-400 space-y-1">
                   <li>✓ 뛰어난 스토리텔링</li>
                   <li>✓ 창의적인 표현</li>
-                  <li>✓ 반복 없음</li>
+                  <li>✓ 내용 중복 최소화</li>
                 </ul>
               </div>
             </div>
